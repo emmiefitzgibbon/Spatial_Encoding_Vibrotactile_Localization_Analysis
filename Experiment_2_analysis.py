@@ -8,6 +8,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+try:
+    import statsmodels.api as sm
+    from statsmodels.regression.mixed_linear_model import MixedLM
+    HAS_STATSMODELS = True
+except ImportError:
+    HAS_STATSMODELS = False
+import math
+
 import importlib.util
 
 _HELPER_PATH = Path(__file__).parent / "visualization_helpers" / "experiment2_visualization_helpers.py"
@@ -499,6 +507,153 @@ class Experiment2Analyzer:
         with open(output_file, 'w') as f:
             f.write('\n'.join(latex_lines))
 
+    def _fit_mixed_model_terms(self, data: pd.DataFrame, metric_col: str) -> dict:
+        if not HAS_STATSMODELS:
+            return {'error': 'statsmodels not available'}
+        if len(data) == 0 or metric_col not in data.columns:
+            return {'error': 'no data'}
+
+        model_data = data[['participantID', 'condition', 'time_point', metric_col]].dropna().copy()
+        model_data = model_data[model_data['condition'].isin(['Discrete Graded', 'Interpolated Graded'])]
+        if len(model_data) == 0:
+            return {'error': 'no valid data'}
+
+        model_data['condition'] = model_data['condition'].astype(str)
+        model_data['cond_interpolated'] = (model_data['condition'] == 'Interpolated Graded').astype(int)
+        timepoint_mean = model_data['time_point'].mean()
+        model_data['timepoint_centered'] = model_data['time_point'] - timepoint_mean
+        model_data['interaction'] = model_data['cond_interpolated'] * model_data['timepoint_centered']
+
+        X = model_data[['cond_interpolated', 'timepoint_centered', 'interaction']].values
+        X = sm.add_constant(X)
+        y = model_data[metric_col].values
+        groups = model_data['participantID'].values
+
+        try:
+            model = MixedLM(y, X, groups, exog_re=None)
+            result = model.fit(reml=False)
+        except Exception as e:
+            return {'error': str(e)}
+
+        coefs = np.array(result.params)
+        pvals = np.array(result.pvalues)
+        cov = result.cov_params()
+
+        discrete_slope = coefs[2]
+        discrete_p = pvals[2]
+        interpolated_slope = coefs[2] + coefs[3]
+        var_sum = cov[2, 2] + cov[3, 3] + 2 * cov[2, 3]
+        if var_sum > 0:
+            se_sum = math.sqrt(var_sum)
+            z = interpolated_slope / se_sum
+            p_interp = 2 * (1 - 0.5 * (1 + math.erf(abs(z) / math.sqrt(2))))
+        else:
+            p_interp = np.nan
+
+        return {
+            'discrete_slope': discrete_slope,
+            'discrete_p': discrete_p,
+            'interpolated_slope': interpolated_slope,
+            'interpolated_p': p_interp,
+            'interaction_beta': coefs[3],
+            'interaction_p': pvals[3],
+            'n_obs': len(model_data),
+            'n_participants': model_data['participantID'].nunique()
+        }
+
+    def create_experiment2_mixed_model_tables(self):
+        if not HAS_STATSMODELS:
+            return
+
+        locate_complete = self.filter_complete_session_participants(self.locate_learning)
+        pointing_complete = self.filter_complete_session_participants(self.pointing_learning)
+        da_complete = self.filter_complete_session_participants(self.DA_questions)
+
+        primary_specs = [
+            ('Locate (targets/min)', locate_complete, 'hit_rate'),
+            ('Point (selection error, cm)', pointing_complete, 'mean_selection_error'),
+            ('Composite DA (1–7)', da_complete, 'composite_da_score')
+        ]
+        secondary_specs = [
+            ('Angular Deviation (degrees)', pointing_complete, 'mean_angular_deviation'),
+            ('Depth Error (cm)', pointing_complete, 'mean_depth_error')
+        ]
+
+        def build_rows(specs):
+            rows = []
+            for metric_label, data, metric_col in specs:
+                if len(data) == 0 or metric_col not in data.columns:
+                    continue
+                model_data = data.copy()
+                if metric_label in ['Point (selection error, cm)', 'Depth Error (cm)']:
+                    model_data[metric_col] = model_data[metric_col] * 100
+                results = self._fit_mixed_model_terms(model_data, metric_col)
+                if 'error' in results:
+                    continue
+                rows.append({
+                    'Metric': metric_label,
+                    'Discrete Graded': results['discrete_slope'],
+                    'Discrete p': results['discrete_p'],
+                    'Interpolated Graded': results['interpolated_slope'],
+                    'Interpolated p': results['interpolated_p'],
+                    'Condition × Timepoint': results['interaction_beta'],
+                    'Interaction p': results['interaction_p'],
+                    'n_participants': results['n_participants'],
+                    'n_obs': results['n_obs']
+                })
+            return rows
+
+        primary_rows = build_rows(primary_specs)
+        secondary_rows = build_rows(secondary_specs)
+
+        def export_tables(rows, basename, caption):
+            if not rows:
+                return
+            df = pd.DataFrame(rows)
+            csv_path = self.output_dir / f'{basename}.csv'
+            df.to_csv(csv_path, index=False)
+
+            latex_lines = []
+            latex_lines.append("\\begin{table}[h]")
+            latex_lines.append("\\centering")
+            latex_lines.append(f"\\caption{{{caption}}}")
+            latex_lines.append("\\begin{tabular}{lccc}")
+            latex_lines.append("\\toprule")
+            latex_lines.append("Metric & Slope (Discrete) & Slope (Interpolated) & Condition $\\times$ Timepoint \\\\")
+            latex_lines.append("\\midrule")
+
+            for _, row in df.iterrows():
+                def format_cell(beta, p_val):
+                    if np.isnan(beta) or np.isnan(p_val):
+                        return "---"
+                    p_str = "< 0.001" if p_val < 0.001 else f"{p_val:.3f}"
+                    return f"$\\beta$={beta:.3f}, p={p_str}"
+
+                discrete_cell = format_cell(row['Discrete Graded'], row['Discrete p'])
+                interpolated_cell = format_cell(row['Interpolated Graded'], row['Interpolated p'])
+                interaction_cell = format_cell(row['Condition × Timepoint'], row['Interaction p'])
+                latex_lines.append(
+                    f"{row['Metric']} & {discrete_cell} & {interpolated_cell} & {interaction_cell} \\\\"
+                )
+            latex_lines.append("\\bottomrule")
+            latex_lines.append("\\end{tabular}")
+            latex_lines.append("\\end{table}")
+
+            tex_path = self.output_dir / f'{basename}.tex'
+            with open(tex_path, 'w') as f:
+                f.write('\n'.join(latex_lines))
+
+        export_tables(
+            primary_rows,
+            'experiment2_mixed_model_primary_metrics',
+            'Experiment 2: Mixed-Effects Models for Primary Metrics'
+        )
+        export_tables(
+            secondary_rows,
+            'experiment2_mixed_model_secondary_metrics',
+            'Experiment 2: Mixed-Effects Models for Secondary Metrics'
+        )
+
     def create_plots(self):
         locate_complete = self.filter_complete_session_participants(self.locate_learning)
         pointing_complete = self.filter_complete_session_participants(self.pointing_learning)
@@ -523,6 +678,7 @@ class Experiment2Analyzer:
         self.process_da_data()
         self.create_plots()
         self.create_experiment2_primary_outcomes_latex_table()
+        self.create_experiment2_mixed_model_tables()
         print(f"Results saved to: {self.output_dir}")
 
 

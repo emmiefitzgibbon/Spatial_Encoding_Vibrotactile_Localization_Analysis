@@ -1,0 +1,20 @@
+% Note: This table requires \usepackage{multirow} in your LaTeX preamble
+\begin{table}[h]
+\centering
+\caption{Experiment 2: Metrics by Block}
+\label{tab:experiment2_metrics_by_block}
+\begin{tabular}{llcccccc}
+\toprule
+Metric & Condition & Block 1 & Block 2 & Block 3 & Block 4 & Block 5 & Block 6 \\
+\midrule
+\multirow{2}{*}{Target Acquisition Rate (targets/min)} & Discrete & 5.23 $\pm$ 2.94 & 6.05 $\pm$ 2.34 & 7.73 $\pm$ 1.65 & 7.75 $\pm$ 3.41 & 9.16 $\pm$ 3.22 & 9.39 $\pm$ 3.26 \\
+ & Interpolated & 4.09 $\pm$ 1.69 & 5.34 $\pm$ 2.86 & 6.48 $\pm$ 3.65 & 7.34 $\pm$ 3.17 & 8.11 $\pm$ 3.23 & 9.95 $\pm$ 3.81 \\
+\addlinespace
+\multirow{2}{*}{Point Selection Error (cm)} & Discrete & 19.6 $\pm$ 13.7 & 19.6 $\pm$ 16.7 & 17.3 $\pm$ 18.9 & 15.9 $\pm$ 11.5 & 13.7 $\pm$ 8.4 & 14.7 $\pm$ 11.7 \\
+ & Interpolated & 21.5 $\pm$ 9.4 & 17.8 $\pm$ 20.8 & 13.1 $\pm$ 5.6 & 18.7 $\pm$ 10.5 & 13.0 $\pm$ 5.1 & 11.6 $\pm$ 8.9 \\
+\addlinespace
+\multirow{2}{*}{Composite DA (1--7)} & Discrete & 2.82 $\pm$ 1.21 & 3.45 $\pm$ 1.29 & 3.94 $\pm$ 1.44 & 4.00 $\pm$ 1.36 & 4.24 $\pm$ 1.33 & 4.24 $\pm$ 1.65 \\
+ & Interpolated & 3.00 $\pm$ 1.27 & 3.12 $\pm$ 1.02 & 3.33 $\pm$ 1.25 & 3.42 $\pm$ 1.47 & 4.06 $\pm$ 1.39 & 4.42 $\pm$ 1.41 \\
+\bottomrule
+\end{tabular}
+\end{table}

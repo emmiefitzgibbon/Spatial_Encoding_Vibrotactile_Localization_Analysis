@@ -34,6 +34,7 @@ Windows (PowerShell):
 - Pointing task: `pointing_accuracy_LP###_s[1-2]b[1-3]_[condition]_LongitudinalStudy_S[1-2]_B[1-3].csv`
 - Where `LP###` is the participant ID (e.g., LP001, LP002) and `S[1-2]_B[1-3]` indicates session and block
 
+---
 
 **Locate task CSVs:**
 - A new row was logged with every target acquired.

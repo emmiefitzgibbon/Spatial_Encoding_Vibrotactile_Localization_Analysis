@@ -1,0 +1,69 @@
+Timestamp,PID (filled out by experimenter),Configuration (filled out by experimenter),Task order (filled out by experimenter),Did vibrations feel like they were coming from the target or from your hands?,I experienced: ,"Did you feel like you could perceive the target's position directly, or did you have to deliberately interpret it based on the vibrations",How much were you attending to your hands as the basis for your judgments?,"When you moved the controllers, did the haptic sensations change in a predictable way?","Did you perceive each target as existing in a stable, stationary location? ",How intuitive did the haptic feedback feel?,Did the target feel like it existed independently of your actions?,How accurate/reliable did the haptic system feel?,Which condition was your favorite?,Any additional comments or feedback?
+10/9/2025 15:50:11,P001,Discrete Constant,1,5,1,2,6,5,3,4,7,5,I preferred the other condition,"It was hard to tell how far away an object was because all the vibrations were constant (not getting stronger the closer I got) so I had to triangulate the object a lot, and it was particularly confusing when I was directly on top of the object, and so the haptic signals were changing all the time. I think with more time I could get the hang of it, but it was not very intuitive and pretty challenging."
+10/9/2025 15:55:33,P001,Interpolated Constant,2,6,6,2,3,6,7,5,5,4,I preferred this condition,"I don't know if it is because I had some practice with the other condition, but this one overall felt easier, because I could tell exactly when I was pointing at the object, and when I wasn't, and I didn't have to triangulate the position. However, what was difficult about this was that because I felt like I could sense where the object was, when I went to hit it and the object wasn't there, I got more confused than in the first condition (usually this meant the object was right on top of me, but it was a lot of blind searching around where I thought the object was). 
+
+Also, near the end of the experience, I felt as if my hands couldn't feel the front, and inside vibrations anymore, and I was judging based off of the other vibrations to sense where the object was. So that made it more difficult. "
+10/9/2025 21:40:57,P002,Interpolated Graded,1,5,6,5,5,3,7,6,7,6,I preferred the other condition,
+10/9/2025 21:42:23,P002,Discrete Graded,2,3,4,3,5,3,6,5,6,6,I preferred this condition,
+10/13/2025 15:54:39,P003,Interpolated Graded,1,4,5,2,3,7,2,6,6,7,I preferred this condition,"As I tried to find the target, I mainly relied on my fingers more than my hands. I felt like the vibrations  in my fingers felt stronger than the vibrations in my hand. Overall it was a joyful experience and the system was very accurate. I could easily find the targets overall. Both 2 trials were pretty easy but I felt like moving around gave me more options to find the object easily compared to the trial which I was standing. When I  was standing, I could find where the target was, it was hard to estimate how far it was from me. It was hard for me to estimate the length between me and the target."
+10/13/2025 15:57:07,P003,Discrete Graded,2,2,7,3,4,7,2,7,7,7,I preferred the other condition,It was hard to estimate how far the object was from me compared to the 1st experiment. It was easy to find where the targrt itself was but  it was hard to estimate how far it was from me.
+10/16/2025 16:01:09,P004,Discrete Graded,1,5,4,2,7,4,4,1,7,3,I preferred this condition,I think I started getting frustrated in the second condition and that affected how much I wanted to work with it.
+10/16/2025 16:06:23,P004,Interpolated Graded,2,1,2,1,7,2,3,1,3,2,I preferred the other condition,"During this condition, I sort of hit my limit of wanting to work with the haptics and interpret the feedback. In both conditions, I felt like I needed to triangulate the haptic feedback. The window of vibration felt very wide for each orb and I could not differentiate from very-close to sorta-close proximity. This condition was especially difficult because, at several points, the haptics were vibrating so much, my hands felt desensitized and I couldn't sense direction."
+10/16/2025 18:02:28,P005,Discrete Graded,1,6,1,4,6,5,2,6,5,6,I preferred the other condition,
+10/16/2025 18:03:28,P005,Interpolated Graded,2,6,1,7,7,4,3,5,4,5,I preferred this condition,
+10/16/2025 18:58:59,P006,Discrete Constant,1,3,4,2,6,5,6,2,2,2,I preferred the other condition,
+10/16/2025 19:00:43,P006,Interpolated Constant,2,5,6,4,6,6,7,6,7,6,I preferred this condition,
+10/18/2025 16:53:14,P007,Discrete Graded,1,1,2,2,7,3,2,2,3,4,I preferred the other condition,
+10/18/2025 16:55:21,P007,Interpolated Graded,2,5,5,5,5,6,6,5,6,6,I preferred this condition,
+10/18/2025 20:46:03,P008,Discrete Constant,1,2,3,2,5,3,3,3,3,3,I preferred the other condition,
+10/18/2025 20:47:31,P008,Interpolated Constant,2,6,6,6,6,6,7,6,7,6,I preferred this condition,
+10/20/2025 13:55:57,P009,Interpolated Constant,1,1,1,1,7,4,3,4,7,4,I preferred this condition,
+10/20/2025 13:58:47,P009,Discrete Constant,2,3,1,1,7,4,6,3,7,4,I preferred the other condition,
+10/20/2025 18:50:38,P010,Interpolated Constant,1,4,3,4,3,6,6,5,5,5,I preferred the other condition,There may be some recency effect since I did the other condition after this one
+10/20/2025 18:53:58,P010,Discrete Constant,2,2,2,1,1,3,2,1,5,2,I preferred this condition,"This condition made me feel like I was operating in a cartesian coordinate system, which made it easier to estimate the location even though it felt less natural"
+10/20/2025 20:45:32,P011,Discrete Constant,1,2,2,4,5,7,7,5,2,6,I preferred this condition,
+10/20/2025 20:46:37,P011,Interpolated Constant,2,2,2,4,5,6,7,5,7,6,I preferred the other condition,
+10/23/2025 21:03:37,P012,Discrete Graded,1,2,3,2,6,6,7,3,6,5,I preferred the other condition,
+10/23/2025 21:07:24,P012,Interpolated Graded,2,3,3,3,6,6,6,2,6,5,I preferred this condition,"When the target is generated too close to me, the gloves tend to not vibrate in any direction."
+10/25/2025 12:51:47,P013,Interpolated Graded,1,6,4,2,6,5,5,3,5,6,I preferred this condition,
+10/25/2025 12:53:41,P013,Discrete Graded,2,6,5,3,5,5,6,4,5,5,I preferred the other condition,
+10/25/2025 18:37:28,P014,Interpolated Graded,1,7,5,7,7,7,7,7,6,6,I preferred the other condition,
+10/25/2025 18:38:39,P014,Discrete Graded,2,7,2,6,7,7,7,7,7,7,I preferred this condition,
+10/30/2025 18:58:54,P015,Interpolated Graded,1,3,4,2,5,5,3,3,2,5,I preferred the other condition,
+10/30/2025 19:02:35,P015,Discrete Graded,2,2,2,1,5,6,7,4,1,5,I preferred this condition,"I experienced a notable bit of discomfort from the intensity of the vibrations, especially during this trial, when the feedback was constant. It was most uncommfortable for my pointer and side fingers, as I was using them to triangulate the signal.2"
+11/3/2025 15:56:44,P016,Interpolated Constant,1,1,4,1,6,4,4,3,4,4,I preferred this condition,
+11/3/2025 15:58:48,P016,Discrete Constant,2,1,6,5,6,6,7,5,5,5,I preferred the other condition,
+11/3/2025 16:52:03,P017,Discrete Graded,1,3,1,1,7,5,3,2,5,5,I preferred the other condition,"Was a little choppy, but I could def feel its location, I just needed to think about it"
+11/3/2025 16:53:43,P017,Interpolated Graded,2,6,6,6,6,5,6,6,6,5,I preferred this condition,The first test in this vibration setting was way easier when I closed my eyes. It became way more intuitive 
+11/8/2025 12:09:34,P018,Interpolated Constant,1,1,1,1,6,4,5,5,4,3,I preferred the other condition,When receiving the vibration too long I didn't feel much of the vibration. It gets confusing when the object is closer to me especially. I need to try to make the connection between hand and 3d space (not really intuitive).
+11/8/2025 12:11:17,P018,Discrete Constant,2,4,4,4,5,6,6,4,6,5,I preferred this condition,
+11/8/2025 13:07:14,P019,Discrete Constant,1,2,5,2,6,6,7,4,7,5,I preferred this condition,
+11/8/2025 13:09:14,P019,Interpolated Constant,2,4,6,1,6,5,7,4,7,3,I preferred the other condition,
+11/10/2025 14:59:39,P020,Interpolated Graded,1,5,3,1,6,5,6,3,6,5,I preferred the other condition,
+11/10/2025 15:00:37,P020,Discrete Graded,2,6,3,6,4,6,5,6,7,6,I preferred this condition,
+11/10/2025 16:09:46,P021,Interpolated Constant,1,3,3,1,7,5,6,5,5,4,I preferred the other condition,
+11/10/2025 16:10:48,P021,Discrete Constant,2,5,5,2,6,6,4,6,6,5,I preferred this condition,
+11/10/2025 20:46:31,P023,Interpolated Graded,1,2,3,4,6,5,6,5,6,6,I preferred the other condition,
+11/10/2025 20:47:33,P023,Discrete Graded,2,2,3,3,6,5,5,6,6,6,I preferred this condition,This was easier
+11/13/2025 17:13:38,P024,Discrete Constant,1,1,2,2,6,5,6,2,2,5,I preferred this condition,
+11/13/2025 17:15:07,P024,Interpolated Constant,2,7,2,1,6,5,6,2,2,5,I preferred the other condition,
+11/13/2025 18:08:10,P022,Interpolated Constant,1,6,4,1,6,1,5,1,7,1,I preferred this condition,
+11/13/2025 18:09:41,P022,Discrete Constant,2,2,1,1,7,5,5,1,7,1,I preferred the other condition,
+11/13/2025 19:03:44,P025,Interpolated Graded,1,4,5,2,6,5,6,5,2,2,I preferred the other condition,the game where i was moving was much harder in the one but the pointing game was much easier 
+11/13/2025 19:05:17,P025,Discrete Graded,2,3,3,5,5,6,7,4,5,5,I preferred the other condition,
+11/15/2025 13:20:43,P026,Discrete Graded,1,6,6,2,6,4,7,6,7,5,I preferred the other condition,"i felt like there was a zone in between each direction where i wasnt getting any feedback, like when i swept my hand left and right there was a large zone where i was getting no information from the glove"
+11/15/2025 13:23:14,P026,Interpolated Graded,2,3,3,6,4,6,6,7,7,6,I preferred this condition,"i felt like i was getting more information out of the glove. sometimes it was a bit harder to tell where the target was when he glove was dead on, but it was easier to find the target from a distance"
+11/15/2025 14:01:44,P027,Discrete Graded,1,2,2,3,5,6,7,5,7,6,I preferred the other condition,"My strategy was to move around and attempt to 1maximize the sensation in my pointer finger, which indicated that the target was immediately in front of me"
+11/15/2025 14:03:07,P027,Interpolated Graded,2,3,4,3,3,6,6,6,7,6,I preferred this condition,"Basically moved hands around and tried to see when the left vs. right motors activated, so then I could average that to find the location of the target in the middle of those two points."
+11/20/2025 15:47:42,P029,Discrete Graded,1,6,4,2,4,2,2,3,5,2,I preferred the other condition,
+11/21/2025 21:53:46,P029,Interpolated Graded,2,6,6,2,6,4,5,5,3,5,I preferred this condition,
+11/24/2025 17:45:02,P028,Discrete Constant,1,1,2,1,6,6,7,6,2,5,I preferred the other condition,
+11/24/2025 17:46:48,P028,Interpolated Constant,2,4,3,3,5,6,7,6,7,6,I preferred this condition,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+11/25/2025 11:54:37,P031,Interpolated Constant,1,3,1,1,7,5,7,3,5,5,I preferred the other condition,"The depth was hard to judge, so when the target was out of my reach or inside of my face, it was very difficult to tell exactly how far it was away. During the pointing game, I used the haptic sensations to essentially triangulate where the target was, so I did not have a ""physical"" sense of where it was."
+11/25/2025 11:57:51,P031,Discrete Constant,2,2,1,4,7,7,7,6,6,7,I preferred this condition,"This condition allowed for easier determination of the location because I only experienced one sensation; I believe the other condition was a kind of sensory overload, where I would point around to minimize the sensation I was feeling. This condition felt much more intuitive since there was less information to parse. Like the other condition, I found it easier to triangulate to find the general region the target occupied. However, the immediate change of the haptic motor buzzing made it easier to correct the location/direction of my pointer."
+11/26/2025 12:49:52,P032,Discrete Constant,1,1,4,1,7,6,7,3,1,7,I preferred the other condition,It hurt my hands eventually
+11/26/2025 12:52:53,P032,Interpolated Constant,2,7,7,2,7,5,7,2,1,7,I preferred this condition,"This was not that much better, because it was hard to interpret which direction was the most intense"
+11/26/2025 13:50:11,P033,Interpolated Constant,1,6,3,2,7,7,7,2,7,5,I preferred the other condition,
+11/26/2025 13:51:54,P033,Discrete Constant,2,7,3,4,6,6,7,5,7,7,I preferred this condition,Felt like I had an immediate idea of where each target was.

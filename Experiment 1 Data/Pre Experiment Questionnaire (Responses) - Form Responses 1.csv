@@ -1,0 +1,50 @@
+Timestamp,PID,Age,Gender,What is your dominant hand?,How often do you play video games? ,Have you used virtual reality before?,"If yes, how often?",How comfortable are you with new technology?,"Have you ever experienced motion sickness in VR?
+",Do you have any history of vestibular disorders or balance issues?,"Do you have any visual impairments? If yes, please describe. If no, leave blank. ",Do you wear corrective lenses?,Do you have any hearing impairments that might affect your ability to hear audio cues?,"Do you have any hand, wrist, or arm injuries that might affect your ability to use the haptic gloves or VR controllers?",Do you have a seizure disorder?,"Do you have any dermatological conditions (e.g., rosacea, eczema, serious acne) that could be aggravated by wearing a VR headset?",Are you legally blind and do not wear contacts?
+10/9/2025 14:58:57,P001,19,Female,Right,Weekly (1-3 times per week),yes,2-4 times,9,no,no,,no,no,no,no,no,no
+10/9/2025 20:49:12,P002,20,Female,Right,Rarely (a few times per year),yes,5-10 times,9,no,no,"i have -5.00 far sighted prescription, i wear spectacles",no,no,no,no,no,no
+10/11/2025 14:26:27,LP002,23,Male,Right,Weekly (1-3 times per week),yes,More than 20 times,8,no,no,N/A,yes,no,no,no,no,no
+10/13/2025 12:09:37,LP001,19,Female,Right,Rarely (a few times per year),yes,Once,6,no,no,no,no,no,no,no,no,no
+10/13/2025 15:01:58,P003,23,Male,Right,Rarely (a few times per year),yes,Once,8,no,no,no,no,no,no,no,no,no
+10/13/2025 18:05:54,LP003,29,Female,Left,Weekly (1-3 times per week),yes,2-4 times,4,no,no,,no,no,no,no,no,no
+10/16/2025 15:15:32,P004,37,Nonbinary,Right,Daily,yes,5-10 times,5,yes,no,I wear contacts (-7.5),yes,no,no,no,no,no
+10/16/2025 17:33:57,P005,21,Male,Right,Daily,no,,8,no,no,I wear contacts for astigmatism!,yes,no,no,no,no,no
+10/16/2025 18:08:59,P006,21,Female,Right,Rarely (a few times per year),yes,2-4 times,7,no,no,,no,no,no,no,no,no
+10/18/2025 12:03:48,P008,19,Female,Right,Rarely (a few times per year),no,,8,no,no,,no,no,no,no,no,no
+10/18/2025 15:06:30,LP004,42,Female,Right,Rarely (a few times per year),yes,Once,8,no,no,,yes,no,no,no,no,no
+10/18/2025 16:07:40,P007,26,Female,Right,Occasionally (a few times per month),yes,2-4 times,8,no,no,,yes,no,no,no,no,no
+10/20/2025 13:07:23,P009,22,Female,Right,Never,no,,3,no,no,,no,no,no,no,no,no
+10/20/2025 15:16:31,LP005,22,Male,Right,Occasionally (a few times per month),yes,5-10 times,5,no,no,Near-Sighted,no,no,no,no,no,no
+10/20/2025 18:00:42,P010,21,Female,Right,Rarely (a few times per year),yes,2-4 times,7,no,no,,no,no,no,no,no,no
+10/20/2025 20:05:27,P011,21,Female,Right,Rarely (a few times per year),yes,11-20 times,8,no,no,,yes,no,no,no,no,no
+10/23/2025 17:10:47,LP006,21,Female,Left,Never,yes,2-4 times,4,no,no,,no,no,no,no,no,no
+10/23/2025 18:10:43,LP007,21,Female,Right,Never,yes,More than 20 times,7,no,no,,no,no,no,no,no,no
+10/23/2025 19:12:01,LP008,20,Female,Right,Rarely (a few times per year),yes,Once,8,no,no,,yes,no,no,no,no,no
+10/23/2025 20:22:04,P012,19,Female,Right,Occasionally (a few times per month),yes,2-4 times,9,no,no,near-sighted,yes,no,no,no,no,no
+10/25/2025 12:06:31,P013,19,Female,Right,Occasionally (a few times per month),yes,Once,2,no,no,no,no,no,no,no,no,no
+10/25/2025 18:00:57,P014,23,Male,Right,Daily,yes,More than 20 times,10,no,no,,yes,no,no,no,no,no
+10/30/2025 18:10:00,P015,21,Male,Right,Occasionally (a few times per month),yes,2-4 times,10,no,no,,no,no,no,no,no,no
+11/3/2025 15:00:44,P016,21,Female,Right,Never,no,,7,no,no,,no,no,no,no,no,no
+11/3/2025 16:01:57,P017,21,Female,Right,Occasionally (a few times per month),yes,11-20 times,8,no,no,-2.5,yes,no,no,no,no,no
+11/3/2025 17:06:00,LP009,22,Female,Right,Occasionally (a few times per month),yes,11-20 times,9,no,no,,yes,no,no,no,no,no
+11/6/2025 19:58:55,LP010,23,Female,Right,Rarely (a few times per year),yes,Once,8,no,no,,yes,no,no,no,no,no
+11/8/2025 11:06:24,P018,23,Female,Right,Rarely (a few times per year),yes,5-10 times,8,no,no,,yes,no,no,no,no,no
+11/8/2025 12:24:03,P019,21,Nonbinary,Right,Rarely (a few times per year),no,,8,no,no,near-sightedness.2,yes,no,no,no,no,no
+11/10/2025 14:08:30,P020,216,Male,Right,Occasionally (a few times per month),yes,11-20 times,8,no,no,,no,no,no,no,no,no
+11/10/2025 15:16:54,P0216,21,Female,Right,Rarely (a few times per year),yes,Once,10,no,no,"Yes, I wear glasses",yes,no,no,no,no,no
+11/10/2025 20:06:55,P023,21,Male,Right,Weekly (1-3 times per week),yes,2-4 times,7,no,no,Slightly nearsighted,yes,no,no,no,no,no
+11/13/2025 16:08:20,P024,21,Female,Right,Rarely (a few times per year),no,,7,no,no,,no,no,no,no,no,no
+11/13/2025 17:01:49,P022,27,Female,Right,Regularly (4+ times per week),no,,8,no,no,,no,no,no,no,no,no
+11/13/2025 18:19:40,P025,19,Male,Right,Occasionally (a few times per month),yes,2-4 times,5,no,no,,no,no,no,no,no,no
+11/15/2025 12:14:19,P026,21,Male,Right,Weekly (1-3 times per week),yes,2-4 times,8,no,no,,no,no,no,no,no,no
+11/15/2025 13:32:29,P027,20,Male,Right,Regularly (4+ times per week),no,,9,no,no,,yes,no,no,no,no,no
+11/15/2025 14:48:13,LP011,28,Female,Right,Rarely (a few times per year),yes,Once,5,no,no,,no,no,no,no,no,no
+11/15/2025 15:41:06,LP012,22,Nonbinary,Right,Occasionally (a few times per month),no,,7,no,no,-3.25 (L) and -3.50 (R),no,no,no,no,no,no
+11/20/2025 15:10:22,P029,21,Male,Right,Rarely (a few times per year),yes,Once,6,yes,no,,no,no,no,no,no,no
+11/22/2025 11:29:21,LP013,22,Nonbinary,Right,Occasionally (a few times per month),yes,2-4 times,7,yes,no,,no,no,no,no,no,no
+11/22/2025 13:12:43,LP014,26,Female,Right,Rarely (a few times per year),yes,2-4 times,7,no,no,,yes,no,no,no,no,no
+11/22/2025 14:04:39,LP015,18,Male,Right,Weekly (1-3 times per week),yes,More than 20 times,8,no,no,Wear glasses,yes,no,no,no,no,no
+11/22/2025 16:04:33,LP016,21,Prefer not to answer,Right,Never,yes,,3,no,no,Nearsightedness,yes,no,no,no,no,no
+11/24/2025 17:03:34,P028,20,Male,Right,Weekly (1-3 times per week),yes,5-10 times,8,yes,no,,no,no,no,no,no,no
+11/24/2025 19:04:23,P030,22,Male,Right,Rarely (a few times per year),yes,2-4 times,7,no,no,,no,no,no,no,no,no
+11/25/2025 11:11:12,P031,19,Male,Left,Weekly (1-3 times per week),yes,Once,8,no,no,,yes,no,no,no,no,no
+11/25/2025 16:50:29,LP017,21,Female,Left,Daily,yes,More than 20 times,6,yes,no,short vision ,yes,no,no,no,no,no

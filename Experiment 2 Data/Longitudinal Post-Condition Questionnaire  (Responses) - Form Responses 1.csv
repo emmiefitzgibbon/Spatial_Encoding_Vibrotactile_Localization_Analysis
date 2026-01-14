@@ -1,0 +1,136 @@
+Column 1,PID (filled out by experimenter),Configuration (filled out by experimenter),Session (filled out by experimenter),Block (filled out by experimenter),Did vibrations feel like they were coming from the target or from your hands?,I experienced: ,"Did you feel like you could perceive the target's position directly, or did you have to deliberately interpret it based on the vibrations",How much were you attending to your hands as the basis for your judgments?,"When you moved the controllers, did the haptic sensations change in a predictable way?","Did you perceive each target as existing in a stable, stationary location? ",How intuitive did the haptic feedback feel?,Did the target feel like it existed independently of your actions?,How accurate/reliable did the haptic system feel?,Any additional comments or feedback?
+10/11/2025 14:54:34,LP002,Discrete Graded,1,1,2,1,2,,,,,,,
+10/11/2025 15:03:54,LP002,Discrete Graded,1,2,4,2,3,,,,,,,
+10/11/2025 15:15:26,LP002,Discrete Graded,1,3,5,5,4,6,5,6,3,3,4,
+10/13/2025 12:32:38,LP001,Discrete Graded,1,1,6,5,4,,,,,,,
+10/13/2025 12:45:14,LP001,Discrete Graded,1,2,6,6,4,,,,,,,
+10/13/2025 12:56:46,LP001,Discrete Graded,1,3,6,6,5,5,5,7,6,6,6,n/a
+10/13/2025 18:39:00,LP003,Interpolated Graded,1,1,2,3,1,,,,,,,
+10/13/2025 18:52:05,LP003,Interpolated Graded,1,2,2,3,3,,,,,,,
+10/13/2025 19:11:52,LP003,Interpolated Graded,1,3,3,3,3,6,5,3,5,5,4,"It felt like a mixed bag of my intuition reliably predicting it or not. By the second attempts I certainly was focusing less on the individual feedback sources to guide me, and more the overall sensation of my hands. I could use this to very slightly perceive a heatmap of the location, and this was best done by ""panning"" the area back and forth with hands distant from each other, two heatmaps by which the location is triangulated. The rate of increase in comfort with this new sense felt slow."
+10/16/2025 16:40:40,LP003,Interpolated Graded,2,4,2,3,2,,,,,,,
+10/16/2025 16:53:19,LP003,Interpolated Graded,2,5,4,3,3,,,,,,,
+10/16/2025 17:18:06,LP003,Interpolated Graded,2,6,4,6,4,2,5,6,5,6,5,"Sensation did not feel like it was necessarily coming from my hands *or* from the target but rather, it felt like the air itself possessed a sort of heat map, the air becoming denser as I moved closer to the target. Right at the target did at times seem to be a strong locus of energy that could perhaps be interpreted as that sphere? Also, any focus on the vibration was mostly relegated to the ""forward"" pointer finger, and all the others melted into the background as textural detail. I noticed my own improvement in intuiting the location. Interestingly on the second go I found more success keeping my hands together instead of triangulating with them apart. Left hand consistently felt stronger, as a technical note."
+10/18/2025 14:18:54,LP002,Discrete Graded,2,4,5,5,5,4,6,,,,,
+10/18/2025 14:30:28,LP002,Discrete Graded,2,5,4,6,5,,,,,,,
+10/18/2025 14:40:05,LP002,Discrete Graded,2,6,6,6,5,6,6,7,5,7,5,I wish the front motor is more sensitive (greater power) than the rest of the motor
+10/18/2025 15:38:06,LP004,Interpolated Graded,1,1,6,3,2,,,,,,,
+10/18/2025 15:46:49,LP004,Interpolated Graded,1,2,6,3,3,,,,,,,
+10/18/2025 16:00:15,LP004,Interpolated Graded,1,3,6,3,3,4,6,6,5,7,6,
+10/20/2025 19:23:06,LP004,Interpolated Graded,2,4,5,3,2,,,,,,,
+10/20/2025 19:31:57,LP004,Interpolated Graded,2,5,5,4,3,,,,,,,
+10/20/2025 19:37:08,LP004,Interpolated Graded,2,6,6,5,3,4,5,6,5,7,6,"Vibrations felt a little less reliable when I was immediately in front of the object, especially on the backs of hands"
+10/23/2025 17:39:13,LP006,Interpolated Graded,1,1,3,6,3,,,,,,,
+10/23/2025 17:53:21,LP006,Interpolated Graded,1,2,3,4,3,,,,,,,
+10/23/2025 18:04:52,LP006,Interpolated Graded,1,3,4,4,4,6,6,7,5,4,6,maybe you could add an option for the laser in the left hand
+10/23/2025 18:31:38,LP007,Interpolated Graded,1,1,2,4,3,,,,,,,
+10/23/2025 18:42:19,LP007,Interpolated Graded,1,2,4,5,5,,,,,,,
+10/23/2025 18:56:29,LP007,Interpolated Graded,1,3,4,5,3,5,5,6,4,7,6,I felt a lot more accurate at the locating task than at the pointing task; it was definitely harder for me to try and locate the object out in space and having to determine a rough distance from me. I would move my hands around together a lot to get feedback and roughly locate the angle of the object and the height by feeling the motors on the palm and back of my hands. Such a cool experiment!!!! :D
+10/23/2025 19:37:10,LP008,Interpolated Graded,1,1,5,2,3,,,,,,,
+10/23/2025 19:51:38,LP008,Interpolated Graded,1,2,5,3,3,,,,,,,
+10/23/2025 20:04:45,LP008,Interpolated Graded,1,3,5,4,3,5,7,7,6,5,6,
+10/30/2025 15:36:27,LP001,Discrete Graded,2,4,6,5,4,,,,,,,
+10/30/2025 15:46:17,LP001,Discrete Graded,2,5,6,6,4,,,,,,,
+10/30/2025 15:54:37,LP001,Discrete Graded,2,6,6,6,5,5,7,7,7,7,7,n/a
+10/30/2025 17:25:31,LP007,Interpolated Graded,2,4,5,5,3,,,,,,,
+10/30/2025 17:38:05,LP007,Interpolated Graded,2,5,6,5,4,,,,,,,
+10/30/2025 17:51:10,LP007,Interpolated Graded,2,6,6,6,4,5,6,6,6,6,6,
+11/3/2025 17:29:18,LP009,Discrete Graded,1,1,3,1,2,,,,,,,
+11/3/2025 17:47:49,LP009,Discrete Graded,1,2,3,2,3,,,,,,,
+11/3/2025 17:49:53,LP009,Discrete Graded,1,3,3,2,1,7,6,7,6,6,6,So cool obsessed.
+11/6/2025 19:23:25,LP008,Interpolated Graded,2,4,5,3,3,,,,,,,
+11/6/2025 19:34:24,LP008,Interpolated Graded,2,5,6,4,4,,,,,,,
+11/6/2025 19:44:43,LP008,Interpolated Graded,2,6,6,5,5,5,6,7,6,5,6,
+11/6/2025 20:27:48,LP010,Discrete Graded,1,1,1,2,1,,,,,,,
+11/6/2025 20:39:55,LP010,Discrete Graded,1,2,3,2,1,,,,,,,
+11/6/2025 21:01:25,LP010,Discrete Graded,1,3,6,4,1,6,4,5,4,6,4,woahhh
+11/15/2025 16:25:14,LP012,Discrete Graded,1,1,4,6,2,,,,,,,
+11/15/2025 16:35:29,LP012,Discrete Graded,1,2,3,3,5,,,,,,,
+11/15/2025 16:41:17,LP012,Discrete Graded,1,3,5,5,2,6,3,4,5,6,5,
+11/15/2025 18:10:04,LP009,Discrete Graded,2,4,5,2,1,,,,,,,
+11/15/2025 18:13:05,LP009,Discrete Graded,2,5,5,3,2,,,,,,,
+11/15/2025 18:20:21,LP009,Discrete Graded,2,6,2,2,1,6,5,7,5,3,6,
+11/20/2025 16:29:33,LP006,Interpolated Graded,2,4,6,5,6,,,,,,,
+11/20/2025 16:40:03,LP006,Interpolated Graded,2,5,6,5,5,,,,,,,
+11/20/2025 16:51:21,LP006,Interpolated Graded,2,6,6,6,5,6,7,7,6,7,6,
+11/22/2025 11:48:32,LP013,Interpolated Graded,1,1,2,1,1,,,,,,,
+11/22/2025 11:57:05,LP013,Interpolated Graded,1,2,3,2,1,,,,,,,
+11/22/2025 12:07:32,LP013,Interpolated Graded,1,3,2,3,1,6,2,4,2,7,3,
+11/22/2025 13:37:04,LP014,Discrete Graded,1,1,4,4,3,5,6,6,4,,,
+11/22/2025 13:48:32,LP014,Discrete Graded,1,2,5,5,5,,,,,,,
+11/22/2025 14:00:45,LP014,Discrete Graded,1,3,6,6,6,3,,6,7,6,6,It2 felt like the left hand vibrations were always stronger than the right hand
+11/22/2025 14:25:52,LP015,Discrete Graded,1,1,3,2,1,,,,,,,
+11/22/2025 14:36:26,LP015,Discrete Graded,1,2,4,3,3,,,,,,,
+11/22/2025 14:50:53,LP015,Discrete Graded,1,3,4,4,3,6,5,6,5,7,5,
+11/22/2025 16:28:09,LP016,Interpolated Graded,1,1,3,2,2,,,,,,,
+11/22/2025 16:37:22,LP016,Interpolated Graded,1,2,4,4,4,,,,,,,
+11/22/2025 16:48:39,LP016,Interpolated Graded,1,3,5,4,4,6,6,7,3,7,6,
+11/25/2025 17:10:08,LP017,Interpolated Graded,1,1,3,6,2,,,,,,,
+11/25/2025 17:18:42,LP017,Interpolated Graded,1,2,3,3,2,,,,,,,
+11/25/2025 17:30:43,LP017,Interpolated Graded,1,3,2,4,1,6,6,6,6,7,5,"- The haptics felt a bit irritable, especially when I was close but couldn't locate it. It reminded me of the find-my-iphone experience. 
+- I was able to find the general direction (~2x2 target sizes) but once I got close I had to sweep the area.
+- Starting from the second turn I felt like my hands and visions were two different channels of sensing my environment, I didn't have to 'look' at the target to find it. "
+11/26/2025 11:13:12,LP017,Interpolated Graded,2,4,3,3,2,,,,,,,
+11/26/2025 11:20:49,LP017,Interpolated Graded,2,5,2,3,2,,,,,,,
+11/26/2025 11:34:32,LP017,Interpolated Graded,2,6,2,4,3,6,5,7,6,7,5,"For the third attempt I closed my eyes once I got the general direction and that seemed to help. 
+For the pointing task I used my right hand for a general direction and pointed my left index finger out to test out the xyz axis to estimate the more precise location."
+12/1/2025 13:21:43,LP014,Discrete Graded,2,4,5,5,4,,,,,,,
+12/1/2025 13:30:04,LP014,Discrete Graded,2,5,5,5,4,,,,,,,
+12/1/2025 13:41:21,LP014,Discrete Graded,2,6,5,5,5,3,5,5,5,7,6,
+12/1/2025 14:21:19,LP018,Interpolated Graded,1,1,2,1,1,,,,,,,
+12/1/2025 14:29:03,LP018,Interpolated Graded,1,2,1,1,1,,,,,,,
+12/1/2025 14:39:11,LP018,Interpolated Graded,1,3,1,1,1,7,5,7,3,7,4,
+12/1/2025 15:24:52,LP019,Interpolated Graded,1,1,2,4,2,,,,,,,
+12/1/2025 15:40:47,LP019,Interpolated Graded,1,2,3,4,2,,,,,,,
+12/1/2025 15:48:43,LP019,Interpolated Graded,1,3,3,3,2,6,6,6,2,6,6,
+12/1/2025 19:30:57,LP020,Discrete Graded,1,1,5,4,3,,,,,,,
+12/1/2025 19:39:02,LP020,Discrete Graded,1,2,5,5,4,,,,,,,
+12/1/2025 19:51:20,LP020,Discrete Graded,1,3,5,4,3,3,5,5,3,6,4,"to get to the target, ""calculating"" based on the vibrations rather than intuition is easier."
+12/4/2025 15:46:46,LP021,Discrete Graded,1,1,3,4,2,,,,,,,
+12/4/2025 16:03:25,LP021,Discrete Graded,1,2,4,5,3,,,,,,,
+12/4/2025 16:05:24,LP021,Discrete Graded,1,3,5,5,4,5,6,7,5,7,5,
+12/4/2025 16:39:16,LP022,Discrete Graded,1,1,3,3,2,,,,,,,
+12/4/2025 16:49:06,LP022,Discrete Graded,1,2,4,3,3,,,,,,,
+12/4/2025 17:01:38,LP022,Discrete Graded,1,3,4,4,4,5,3,5,3,6,5,definitely got tiring as progressed - especially by the end of the second one but super cool :)
+12/4/2025 17:29:15,LP023,Discrete Graded,1,1,1,2,2,,,,,,,
+12/4/2025 17:37:45,LP023,Discrete Graded,1,2,1,1,1,,,,,,,
+12/4/2025 17:49:13,LP023,Discrete Graded,1,3,1,1,1,7,5,3,5,2,6,"i felt myself getting fatigued more quickly from being in vr than i expected, even though at the same time i felt myself adapting to the haptic sensations"
+12/6/2025 12:45:50,LP021,Discrete Graded,2,4,5,5,5,,,,,,,
+12/6/2025 12:57:20,LP021,Discrete Graded,2,5,5,5,5,,,,,,,
+12/6/2025 12:59:19,LP021,Discrete Graded,2,6,6,6,5,3,6,7,6,7,5,
+12/6/2025 13:17:26,LP022,Discrete Graded,2,4,3,3,3,,,,,,,
+12/6/2025 13:25:39,LP022,Discrete Graded,2,5,4,3,4,,,,,,,
+12/6/2025 13:36:41,LP022,Discrete Graded,2,6,4,3,4,3,5,6,5,5,5,
+12/6/2025 14:27:13,LP023,Discrete Graded,2,4,1,1,1,,,,,,,
+12/6/2025 14:38:01,LP023,Discrete Graded,2,5,1,1,1,,,,,,,
+12/6/2025 14:51:46,LP023,Discrete Graded,2,6,1,1,1,7,6,6,6,2,6,i felt more comfortable localizing the targets by moving my hands to find the limits of the forward-pointing haptic on both axes (where it turned into right-pointing haptic on my left hand and simultaneously where it turned into left-pointing haptic on my right hand; AND where it turned into down-pointing haptic on one hand and simultaneously where it turned into the up-pointing haptic on the other hand) and finding the center from there.
+12/6/2025 15:15:22,LP015,Discrete Graded,2,4,6,5,5,,,,,,,
+12/6/2025 15:27:51,LP015,Discrete Graded,2,5,6,6,5,,,,,,,
+12/6/2025 15:42:47,LP015,Discrete Graded,2,6,6,6,5,3,7,7,6,7,6,On some tests I felt like my eyes were able to move to the location of the object before my hands got there/the target was revealed. 
+12/6/2025 17:21:50,LP016,Interpolated Graded,2,4,3,2,2,,,,,,,
+12/6/2025 17:32:38,LP016,Interpolated Graded,2,5,4,4,3,,,,,,,
+12/6/2025 17:46:30,LP016,Interpolated Graded,2,6,4,2,3,6,6,4,6,7,7,
+12/8/2025 13:11:25,LP018,Interpolated Graded,2,4,1,1,1,,,,,,,
+12/8/2025 13:20:21,LP018,Interpolated Graded,2,5,2,2,1,,,,,,,
+12/8/2025 13:32:36,LP018,Interpolated Graded,2,6,2,2,2,7,6,7,3,4,5,I had a bit of a hard time telling the front haptics from the others on my hand but was able to easily tell when the haptics on my wrists were happening. Maybe different vibration patterns for each haptic may help? Or that may be more confusing.
+12/8/2025 14:04:59,LP028,Interpolated Graded,1,1,7,4,6,,,,,,,
+12/8/2025 14:12:46,LP028,Interpolated Graded,1,2,4,3,3,,,,,,,
+12/8/2025 14:23:20,LP028,Interpolated Graded,1,3,6,4,6,2,7,7,6,7,6,
+12/8/2025 16:17:31,LP019,Interpolated Graded,2,4,3,3,3,,,,,,,
+12/8/2025 16:27:55,LP019,Interpolated Graded,2,5,4,5,4,,,,,,,
+12/8/2025 16:38:31,LP019,Interpolated Graded,2,6,5,5,5,5,6,7,5,6,6,
+12/8/2025 18:17:27,LP013,Interpolated Graded,2,4,3,3,4,,,,,,,
+12/8/2025 18:27:19,LP013,Interpolated Graded,2,5,4,4,3,,,,,,,
+12/8/2025 18:41:43,LP013,Interpolated Graded,2,6,3,4,3,6,3,6,5,7,3,"I think I was definitely relying on the front buzzer much more. It felt the strongest and felt the most forceful when I was nearing the target. Conversely the buzzers on the wrists didn't feel that intuitive, It would sometimes maintain a constant buzz as I spun with the target having been somewhere close to my body"
+12/8/2025 19:13:08,LP020,Discrete Graded,2,4,5,5,5,,,,,,,
+12/8/2025 19:21:59,LP020,Discrete Graded,2,5,6,5,5,,,,,,,
+12/8/2025 19:32:49,LP020,Discrete Graded,2,6,6,5,4,3,5,5,4,6,5,"Compared to the first time, I feel considerably better at moving around and touching the targets, but the standing still and pointing task felt somewhat same"
+12/8/2025 20:15:57,LP012,Discrete Graded,2,4,4,5,3,,,,,,,
+12/8/2025 20:25:50,LP012,Discrete Graded,2,5,5,4,3,,,,,,,
+12/8/2025 20:39:14,LP012,Discrete Graded,2,6,4,5,3,6,3,6,3,6,5,Targets close to my positions were difficult to detect in both regimes; the feedback accuracy seemed to depend on how I positioned my fingers in a grip so that to reflect the spatial directions of haptic sensations
+12/11/2025 16:26:05,LP010,Discrete Graded,2,4,3,3,4,,,,,,,
+12/11/2025 16:34:58,LP010,Discrete Graded,2,5,3,4,4,,,,,,,
+12/11/2025 16:45:34,LP010,Discrete Graded,2,6,4,4,3,5,4,6,6,6,5,
+12/13/2025 11:12:51,LP028,Interpolated Graded,2,4,7,6,5,,,,,,,
+12/13/2025 11:21:47,LP028,Interpolated Graded,2,5,7,6,7,,,,,,,
+12/13/2025 11:26:59,LP028,Interpolated Graded,2,6,7,6,7,2,5,5,6,7,6,

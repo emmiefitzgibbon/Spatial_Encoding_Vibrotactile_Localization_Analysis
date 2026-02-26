@@ -3,11 +3,11 @@ Target Acquisition Rate (targets/min),Discrete Constant,4.921875,2.6421562374949
 Target Acquisition Rate (targets/min),Interpolated Constant,2.578125,1.7528993838780365,16
 Target Acquisition Rate (targets/min),Discrete Graded,6.359375,2.0554171312250302,16
 Target Acquisition Rate (targets/min),Interpolated Graded,5.0625,2.1937410968480306,16
-Point Selection Error (cm),Discrete Constant,21.549728535353534,11.43922719184666,16
-Point Selection Error (cm),Interpolated Constant,30.759545454545457,12.16594129993642,16
+Point Selection Error (cm),Discrete Constant,21.549728535353534,11.439227191846658,16
+Point Selection Error (cm),Interpolated Constant,30.759545454545457,12.165941299936419,16
 Point Selection Error (cm),Discrete Graded,18.3352398989899,7.9479454333217525,16
 Point Selection Error (cm),Interpolated Graded,23.387727272727272,9.636268370026519,16
 Composite DA (1--7),Discrete Constant,2.645833333333333,1.0573814617041266,16
 Composite DA (1--7),Interpolated Constant,3.3125,1.4830836244248122,16
-Composite DA (1--7),Discrete Graded,3.375,1.1855612829185826,16
+Composite DA (1--7),Discrete Graded,3.375,1.1855612829185824,16
 Composite DA (1--7),Interpolated Graded,4.0,1.288122377439061,16

@@ -303,11 +303,33 @@ class Experiment2Analyzer:
                 (pointing_filtered['rightControllerY'] - pointing_filtered['selectedTargetY'])**2 +
                 (pointing_filtered['rightControllerZ'] - pointing_filtered['selectedTargetZ'])**2
             )
-            pointing_filtered['depth_error'] = np.abs(
-                pointing_filtered['dist_controller_to_actual'] -
-                pointing_filtered['dist_controller_to_selected']
-            )
-            pointing_filtered['depth_error'] = np.maximum(0, pointing_filtered['depth_error'] - target_radius)
+            # Depth error = radial component of the 3D selection error (so depth_error <= selection_error).
+            # P = nearest point on target sphere to selected point S; error vector = S - P.
+            # Radial direction = from controller C toward target center T. depth_error = |(S-P)·(T-C)/|T-C||.
+            cx = pointing_filtered['rightControllerX'].values
+            cy = pointing_filtered['rightControllerY'].values
+            cz = pointing_filtered['rightControllerZ'].values
+            tx = pointing_filtered['actualTargetX'].values
+            ty = pointing_filtered['actualTargetY'].values
+            tz = pointing_filtered['actualTargetZ'].values
+            sx = pointing_filtered['selectedTargetX'].values
+            sy = pointing_filtered['selectedTargetY'].values
+            sz = pointing_filtered['selectedTargetZ'].values
+            ct = np.sqrt((tx - cx)**2 + (ty - cy)**2 + (tz - cz)**2)
+            st = np.sqrt((sx - tx)**2 + (sy - ty)**2 + (sz - tz)**2)
+            ct_safe = np.where(ct > 1e-9, ct, 1.0)
+            st_safe = np.where(st > 1e-9, st, 0.0)
+            # P = T + r * (S - T) / |S - T|; if S == T use point on sphere nearest to C
+            px = np.where(st_safe > 0, tx + target_radius * (sx - tx) / st_safe, tx - target_radius * (tx - cx) / ct_safe)
+            py = np.where(st_safe > 0, ty + target_radius * (sy - ty) / st_safe, ty - target_radius * (ty - cy) / ct_safe)
+            pz = np.where(st_safe > 0, tz + target_radius * (sz - tz) / st_safe, tz - target_radius * (tz - cz) / ct_safe)
+            ex = sx - px
+            ey = sy - py
+            ez = sz - pz
+            ux = (tx - cx) / ct_safe
+            uy = (ty - cy) / ct_safe
+            uz = (tz - cz) / ct_safe
+            pointing_filtered['depth_error'] = np.abs(ex * ux + ey * uy + ez * uz)
         else:
             pointing_filtered['depth_error'] = np.nan
 
@@ -617,9 +639,9 @@ class Experiment2Analyzer:
             latex_lines.append("\\begin{table}[h]")
             latex_lines.append("\\centering")
             latex_lines.append(f"\\caption{{{caption}}}")
-            latex_lines.append("\\begin{tabular}{lccc}")
+            latex_lines.append("\\begin{tabular}{lcccr}")
             latex_lines.append("\\toprule")
-            latex_lines.append("Metric & Slope (Discrete) & Slope (Interpolated) & Condition $\\times$ Timepoint \\\\")
+            latex_lines.append("Metric & Slope (Discrete) & Slope (Interpolated) & Condition $\\times$ Timepoint & $n$ (participants, obs) \\\\")
             latex_lines.append("\\midrule")
 
             for _, row in df.iterrows():
@@ -632,8 +654,11 @@ class Experiment2Analyzer:
                 discrete_cell = format_cell(row['Discrete Graded'], row['Discrete p'])
                 interpolated_cell = format_cell(row['Interpolated Graded'], row['Interpolated p'])
                 interaction_cell = format_cell(row['Condition × Timepoint'], row['Interaction p'])
+                n_participants = int(row['n_participants']) if pd.notna(row['n_participants']) else ""
+                n_obs = int(row['n_obs']) if pd.notna(row['n_obs']) else ""
+                n_cell = f"{n_participants} ({n_obs})" if n_participants != "" and n_obs != "" else ""
                 latex_lines.append(
-                    f"{row['Metric']} & {discrete_cell} & {interpolated_cell} & {interaction_cell} \\\\"
+                    f"{row['Metric']} & {discrete_cell} & {interpolated_cell} & {interaction_cell} & {n_cell} \\\\"
                 )
             latex_lines.append("\\bottomrule")
             latex_lines.append("\\end{tabular}")
@@ -642,6 +667,13 @@ class Experiment2Analyzer:
             tex_path = self.output_dir / f'{basename}.tex'
             with open(tex_path, 'w') as f:
                 f.write('\n'.join(latex_lines))
+
+            exp2_viz.create_mixed_model_table_png(
+                df,
+                self.output_dir,
+                caption,
+                basename
+            )
 
         export_tables(
             primary_rows,

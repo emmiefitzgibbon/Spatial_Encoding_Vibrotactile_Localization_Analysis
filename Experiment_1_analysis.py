@@ -9,7 +9,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 import pingouin as pg
-from scipy.stats import shapiro, normaltest, levene
+from scipy.stats import shapiro, normaltest, levene, wilcoxon, mannwhitneyu
 
 import importlib.util
 
@@ -223,17 +223,30 @@ class Experiment1Analyzer:
             if all(col in group.columns for col in ['actualTargetX', 'actualTargetY', 'actualTargetZ',
                                                     'selectedTargetX', 'selectedTargetY', 'selectedTargetZ',
                                                     'rightControllerX', 'rightControllerY', 'rightControllerZ']):
-                dist_controller_to_actual = np.sqrt(
-                    (group['rightControllerX'] - group['actualTargetX'])**2 +
-                    (group['rightControllerY'] - group['actualTargetY'])**2 +
-                    (group['rightControllerZ'] - group['actualTargetZ'])**2
-                )
-                dist_controller_to_selected = np.sqrt(
-                    (group['rightControllerX'] - group['selectedTargetX'])**2 +
-                    (group['rightControllerY'] - group['selectedTargetY'])**2 +
-                    (group['rightControllerZ'] - group['selectedTargetZ'])**2
-                )
-                mean_depth_error = np.abs(dist_controller_to_actual - dist_controller_to_selected).mean()
+                cx = group['rightControllerX'].values.astype(float)
+                cy = group['rightControllerY'].values.astype(float)
+                cz = group['rightControllerZ'].values.astype(float)
+                tx = group['actualTargetX'].values.astype(float)
+                ty = group['actualTargetY'].values.astype(float)
+                tz = group['actualTargetZ'].values.astype(float)
+                sx = group['selectedTargetX'].values.astype(float)
+                sy = group['selectedTargetY'].values.astype(float)
+                sz = group['selectedTargetZ'].values.astype(float)
+                r_target = 0.15
+                ct = np.sqrt((tx - cx)**2 + (ty - cy)**2 + (tz - cz)**2)
+                st = np.sqrt((sx - tx)**2 + (sy - ty)**2 + (sz - tz)**2)
+                ct_safe = np.where(ct > 1e-9, ct, 1.0)
+                st_safe = np.where(st > 1e-9, st, 0.0)
+                # P = nearest point on target sphere to S; depth error = radial component of (S-P)
+                px = np.where(st_safe > 0, tx + r_target * (sx - tx) / st_safe, tx - r_target * (tx - cx) / ct_safe)
+                py = np.where(st_safe > 0, ty + r_target * (sy - ty) / st_safe, ty - r_target * (ty - cy) / ct_safe)
+                pz = np.where(st_safe > 0, tz + r_target * (sz - tz) / st_safe, tz - r_target * (tz - cz) / ct_safe)
+                ex, ey, ez = sx - px, sy - py, sz - pz
+                ux = (tx - cx) / ct_safe
+                uy = (ty - cy) / ct_safe
+                uz = (tz - cz) / ct_safe
+                depth_radial = np.abs(ex * ux + ey * uy + ez * uz)
+                mean_depth_error = np.nanmean(depth_radial)
             else:
                 mean_depth_error = np.nan
             
@@ -343,11 +356,56 @@ class Experiment1Analyzer:
         
         return results
     
+    def _run_wilcoxon_mannwhitney(self, data, dv, between_factor, within_factor, subject='participantID'):
+        """Run Wilcoxon signed-rank (within: interpolation) and Mann-Whitney U (between: grading) when ANOVA assumptions are violated."""
+        result = {}
+        try:
+            anova_data = data[[subject, between_factor, within_factor, dv]].dropna()
+            complete = anova_data.groupby(subject).filter(lambda g: g[within_factor].nunique() == 2)
+            if len(complete) < 3:
+                return result
+            # Within-subjects: Wilcoxon (Discrete vs Interpolated per participant)
+            wide = complete.pivot(index=subject, columns=within_factor, values=dv)
+            if 'Discrete' in wide.columns and 'Interpolated' in wide.columns:
+                disc = wide['Discrete'].dropna()
+                interp = wide['Interpolated'].dropna()
+                common = disc.index.intersection(interp.index)
+                if len(common) >= 3:
+                    stat, p = wilcoxon(disc.loc[common], interp.loc[common], alternative='two-sided')
+                    result['wilcoxon_stat'] = stat
+                    result['wilcoxon_p'] = p
+            # Between-subjects: Mann-Whitney (Constant vs Graded)
+            constant = complete[complete[between_factor] == 'Constant'].groupby(subject)[dv].mean()
+            graded = complete[complete[between_factor] == 'Graded'].groupby(subject)[dv].mean()
+            if len(constant) >= 2 and len(graded) >= 2:
+                stat, p = mannwhitneyu(constant, graded, alternative='two-sided')
+                result['mannwhitney_stat'] = stat
+                result['mannwhitney_p'] = p
+        except Exception:
+            pass
+        return result
+    
     def run_mixed_anova(self, data, dv, between_factor, within_factor, subject='participantID'):
         anova_data = data[[subject, between_factor, within_factor, dv]].dropna()
         assumptions = self.check_anova_assumptions(data, dv, between_factor, within_factor, subject)
         aov = pg.mixed_anova(data=anova_data, dv=dv, between=between_factor, within=within_factor, subject=subject)
-        return {'anova_table': aov, 'data': anova_data, 'assumptions': assumptions}
+        out = {'anova_table': aov, 'data': anova_data, 'assumptions': assumptions}
+        # If assumptions violated, run nonparametric tests for reporting
+        norm_ok = True
+        if assumptions.get('normality'):
+            for k, v in assumptions['normality'].items():
+                if isinstance(v, dict) and not v.get('normal', True):
+                    norm_ok = False
+                    break
+        if assumptions.get('homogeneity'):
+            for k, v in assumptions['homogeneity'].items():
+                if isinstance(v, dict) and not v.get('homogeneous', True):
+                    norm_ok = False
+                    break
+        if not norm_ok:
+            nonparam = self._run_wilcoxon_mannwhitney(data, dv, between_factor, within_factor, subject)
+            out['nonparametric'] = nonparam
+        return out
     
     def export_statistical_results(self, locate_anova, pointing_anova, pointing_angular_anova, pointing_depth_anova, da_anova):
         results_list = []
@@ -361,12 +419,28 @@ class Experiment1Analyzer:
             (pointing_depth_anova, 'Point Task', 'Depth Error (cm)', False)
         ]:
             if anova and 'anova_table' in anova:
+                if 'data' in anova and len(anova['data']) > 0:
+                    n_participants = anova['data']['participantID'].nunique()
+                    n_obs = len(anova['data'])
+                else:
+                    n_participants = np.nan
+                    n_obs = np.nan
+                nonparam = anova.get('nonparametric', {})
                 for _, row in anova['anova_table'].iterrows():
+                    effect = row['Source']
+                    p_val = row.get('p-unc', '')
+                    test_used = 'ANOVA'
+                    # Paper reports Wilcoxon only for within-subjects (interpolation) when assumptions violated
+                    if nonparam and effect == 'interpolation' and 'wilcoxon_p' in nonparam:
+                        p_val = nonparam['wilcoxon_p']
+                        test_used = 'Wilcoxon'
                     results_list.append({
-                        'Task': task_name, 'Metric': metric, 'Effect': row['Source'],
-                        'F': row.get('F', ''), 'p': row.get('p-unc', ''),
+                        'Task': task_name, 'Metric': metric, 'Effect': effect,
+                        'F': row.get('F', ''), 'p': p_val, 'test_used': test_used,
                         'eta_squared_partial': row.get('np2', ''), 'epsilon': row.get('eps', ''),
-                        'Primary': is_primary
+                        'Primary': is_primary,
+                        'n_participants': n_participants,
+                        'n_obs': n_obs
                     })
                 if 'assumptions' in anova:
                     assumption_results.append({
@@ -499,6 +573,79 @@ class Experiment1Analyzer:
         with open(output_file, 'w') as f:
             f.write('\n'.join(latex_lines))
     
+    def create_experiment1_secondary_outcomes_table(self, da_data: pd.DataFrame):
+        """Create the secondary/component table: Angular Deviation, Depth Error, DA Q1–Q3 by condition (paper Appendix)."""
+        condition_order = [
+            "Discrete Constant", "Interpolated Constant",
+            "Discrete Graded", "Interpolated Graded"
+        ]
+        rows = []
+        if len(self.pointing_summary) > 0 and 'angular_deviation' in self.pointing_summary.columns:
+            for c in condition_order:
+                d = self.pointing_summary[self.pointing_summary['condition'] == c]
+                if len(d):
+                    rows.append(('Angular Deviation (degrees)', c, d['angular_deviation'].mean(), d['angular_deviation'].std()))
+        if len(self.pointing_summary) > 0 and 'depth_error' in self.pointing_summary.columns:
+            for c in condition_order:
+                d = self.pointing_summary[self.pointing_summary['condition'] == c]
+                if len(d):
+                    rows.append(('Depth Error (cm)', c, d['depth_error'].mean(), d['depth_error'].std()))
+        if len(da_data) > 0:
+            for col, label in [
+                ('q1_vibration_location', 'DA Q1: Vibration Location (1--7)'),
+                ('q2_experience_quality', 'DA Q2: Experience Quality (1--7)'),
+                ('q3_direct_vs_interpret', 'DA Q3: Direct vs Interpreted (1--7)')
+            ]:
+                if col not in da_data.columns:
+                    continue
+                for c in condition_order:
+                    d = da_data[da_data['condition'] == c]
+                    if len(d):
+                        rows.append((label, c, d[col].mean(), d[col].std()))
+        if not rows:
+            return
+        table_df = pd.DataFrame(rows, columns=['metric', 'condition', 'mean', 'std'])
+        table_df.to_csv(self.output_dir / 'experiment1_secondary_outcomes_table.csv', index=False)
+        # Build LaTeX (same layout as paper: Constant | Graded, Discrete | Interpolated)
+        def cell(mean, std, metric):
+            if np.isnan(mean) or np.isnan(std):
+                return "---"
+            if 'DA Q' in metric or '1--7' in metric:
+                return f"{mean:.2f} $\\pm$ {std:.2f}"
+            return f"{mean:.1f} $\\pm$ {std:.1f}"
+        latex = [
+            "\\begin{table*}[t]",
+            "  \\centering",
+            "  \\caption{Experiment 1: Secondary/Component Metrics by Condition.}",
+            "  \\label{tab:experiment1_components}",
+            "  {\\setlength{\\tabcolsep}{19pt}",
+            "  \\begin{tabular}{lcccc}",
+            "  \\toprule",
+            "  Component & \\multicolumn{2}{c}{Constant} & \\multicolumn{2}{c}{Graded} \\\\",
+            "  \\cmidrule(lr){2-3} \\cmidrule(lr){4-5}",
+            "   & Discrete & Interpolated & Discrete & Interpolated \\\\",
+            "  \\midrule"
+        ]
+        metric_order = ['Angular Deviation (degrees)', 'Depth Error (cm)',
+                        'DA Q1: Vibration Location (1--7)', 'DA Q2: Experience Quality (1--7)', 'DA Q3: Direct vs Interpreted (1--7)']
+        for metric in metric_order:
+            sub = table_df[table_df['metric'] == metric]
+            if len(sub) == 0:
+                continue
+            vals = {row['condition']: cell(row['mean'], row['std'], metric) for _, row in sub.iterrows()}
+            dc = vals.get('Discrete Constant', '---')
+            ic = vals.get('Interpolated Constant', '---')
+            dg = vals.get('Discrete Graded', '---')
+            ig = vals.get('Interpolated Graded', '---')
+            latex.append(f"  {metric} & {dc} & {ic} & {dg} & {ig} \\\\")
+        latex.extend([
+            "  \\bottomrule",
+            "  \\end{tabular}}",
+            "  \\end{table*}"
+        ])
+        with open(self.output_dir / 'experiment1_secondary_outcomes_table.tex', 'w') as f:
+            f.write('\n'.join(latex))
+    
     def run_analysis(self):
         self.load_data()
         self.filter_data()
@@ -522,6 +669,7 @@ class Experiment1Analyzer:
         
         self.export_statistical_results(locate_anova, pointing_anova, pointing_angular_anova, pointing_depth_anova, da_anova)
         self.create_experiment1_primary_outcomes_table(da_data)
+        self.create_experiment1_secondary_outcomes_table(da_data)
         
         if len(self.locate_summary) > 0:
             exp1_viz.create_plot(self.locate_summary, 'hit_rate', 'Target Acquisition Rate',

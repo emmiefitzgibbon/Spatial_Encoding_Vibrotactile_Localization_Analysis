@@ -2,6 +2,7 @@
 """Experiment 2 Visualization Script"""
 
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 
@@ -627,5 +628,72 @@ def plot_normalized_depth_error(data, plots_dir):
 
     plt.tight_layout()
     plt.savefig(plots_dir / "depth_error_normalized.png", dpi=300, bbox_inches='tight')
+    plt.close()
+
+
+def create_mixed_model_table_png(results_df, output_dir, title, filename):
+    if results_df is None or len(results_df) == 0:
+        return
+
+    fig, ax = plt.subplots(figsize=(19, 6.5))
+    ax.axis('off')
+
+    table_data = []
+    for _, row in results_df.iterrows():
+        def format_cell(beta, p_val):
+            if pd.isna(beta) or pd.isna(p_val):
+                return "---"
+            p_str = "< 0.001" if p_val < 0.001 else f"{p_val:.3f}"
+            return f"$\\beta$={beta:.3f}, p={p_str}"
+
+        n_participants = row.get('n_participants', np.nan)
+        n_obs = row.get('n_obs', np.nan)
+        if pd.isna(n_participants) or pd.isna(n_obs):
+            n_display = ""
+        else:
+            n_display = f"{int(n_participants)} ({int(n_obs)})"
+
+        table_data.append([
+            row.get('Metric', ''),
+            format_cell(row.get('Discrete Graded', np.nan), row.get('Discrete p', np.nan)),
+            format_cell(row.get('Interpolated Graded', np.nan), row.get('Interpolated p', np.nan)),
+            format_cell(row.get('Condition × Timepoint', np.nan), row.get('Interaction p', np.nan)),
+            n_display
+        ])
+
+    table = ax.table(
+        cellText=table_data,
+        colLabels=['Metric', 'Slope (Discrete)', 'Slope (Interpolated)', 'Condition × Timepoint', 'n (participants, obs)'],
+        cellLoc='left',
+        loc='center',
+        bbox=[0, 0, 1, 1]
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1, 2.3)
+
+    col_widths = [0.25, 0.215, 0.215, 0.22, 0.135]
+    for i, width in enumerate(col_widths):
+        for j in range(len(table_data) + 1):
+            cell = table[(j, i)]
+            cell.set_width(width)
+
+    for i in range(5):
+        cell = table[(0, i)]
+        cell.set_facecolor('#D6E3F0')
+        cell.set_text_props(weight='bold')
+        cell.set_edgecolor('black')
+        cell.set_linewidth(1.5)
+
+    for i in range(len(table_data)):
+        row_color = 'white' if i % 2 == 0 else '#D6E3F0'
+        for j in range(5):
+            cell = table[(i + 1, j)]
+            cell.set_facecolor(row_color)
+            cell.set_edgecolor('black')
+            cell.set_linewidth(1.5)
+
+    plt.title(title, fontsize=14, fontweight='bold', pad=18)
+    plt.savefig(output_dir / f"{filename}.png", dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
 

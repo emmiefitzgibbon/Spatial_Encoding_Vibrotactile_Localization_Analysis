@@ -211,7 +211,7 @@ def create_plot(data, y_column, ylabel, title, filename, plots_dir, anova_result
     plt.savefig(plots_dir / f"{filename}.png", dpi=300, bbox_inches='tight')
     plt.close()
 
-def create_statistical_table_png(results_df, output_dir):
+def create_results_table_png(results_df, output_dir):
     def get_sort_key(row):
         task = row['Task']
         metric = row['Metric']
@@ -233,7 +233,7 @@ def create_statistical_table_png(results_df, output_dir):
     results_df['sort_key'] = results_df.apply(get_sort_key, axis=1)
     results_df = results_df.sort_values('sort_key')
     
-    fig, ax = plt.subplots(figsize=(18, 10))
+    fig, ax = plt.subplots(figsize=(16, 10))
     ax.axis('off')
     
     table_data = []
@@ -244,27 +244,21 @@ def create_statistical_table_png(results_df, output_dir):
         p_str = "< 0.001" if pd.notna(row['p']) and row['p'] < 0.001 else (f"{row['p']:.4f}" if pd.notna(row['p']) else "")
         f_str = f"{row['F']:.2f}" if pd.notna(row['F']) else ""
         eta2_str = f"{row['eta_squared_partial']:.3f}" if pd.notna(row['eta_squared_partial']) else ""
-        n_participants = row.get('n_participants', np.nan)
-        n_obs = row.get('n_obs', np.nan)
-        if pd.isna(n_participants) or pd.isna(n_obs):
-            n_display = ""
-        else:
-            n_display = f"{int(n_participants)} ({int(n_obs)})"
-        table_data.append([metric_display, row['Effect'], f_str, p_str, eta2_str, n_display])
+        table_data.append([metric_display, row['Effect'], f_str, p_str, eta2_str])
     
-    table = ax.table(cellText=table_data, colLabels=['Metric', 'Effect', 'F', 'p', 'η²p', 'n (participants, obs)'],
+    table = ax.table(cellText=table_data, colLabels=['Metric', 'Effect', 'F', 'p', 'η²p'],
                     cellLoc='left', loc='center', bbox=[0, 0, 1, 1])
     table.auto_set_font_size(False)
     table.set_fontsize(10)
     table.scale(1, 2.5)
     
-    col_widths = [0.38, 0.13, 0.08, 0.13, 0.1, 0.12]
+    col_widths = [0.4, 0.15, 0.1, 0.15, 0.1]
     for i, width in enumerate(col_widths):
         for j in range(len(table_data) + 1):
             cell = table[(j, i)]
             cell.set_width(width)
     
-    for i in range(6):
+    for i in range(5):
         cell = table[(0, i)]
         cell.set_facecolor('#D6E3F0')
         cell.set_text_props(weight='bold')
@@ -277,7 +271,7 @@ def create_statistical_table_png(results_df, output_dir):
         group_num = i // 3
         row_color = 'white' if group_num % 2 == 0 else '#D6E3F0'
         
-        for j in range(6):
+        for j in range(5):
             cell = table[(i + 1, j)]
             cell.set_facecolor(row_color)
             if not is_primary:

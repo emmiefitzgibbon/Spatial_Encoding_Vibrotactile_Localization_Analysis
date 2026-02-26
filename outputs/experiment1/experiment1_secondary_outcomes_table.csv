@@ -1,0 +1,21 @@
+metric,condition,mean,std
+Angular Deviation (degrees),Discrete Constant,10.993173737373738,4.995576235299499
+Angular Deviation (degrees),Interpolated Constant,17.627289204545455,11.589918850835414
+Angular Deviation (degrees),Discrete Graded,11.426202398989899,5.041107968885822
+Angular Deviation (degrees),Interpolated Graded,13.85127556818182,6.14992868821718
+Depth Error (cm),Discrete Constant,17.150669674034585,9.507221056387975
+Depth Error (cm),Interpolated Constant,25.869408769800533,10.60041237999961
+Depth Error (cm),Discrete Graded,15.869828215983553,7.526658772556275
+Depth Error (cm),Interpolated Graded,16.922719502724682,6.463539574824531
+DA Q1: Vibration Location (1--7),Discrete Constant,2.6875,1.7404501333467348
+DA Q1: Vibration Location (1--7),Interpolated Constant,4.125,2.1252450839060106
+DA Q1: Vibration Location (1--7),Discrete Graded,3.875,2.0289570391377603
+DA Q1: Vibration Location (1--7),Interpolated Graded,4.3125,1.7017148213885114
+DA Q2: Experience Quality (1--7),Discrete Constant,2.875,1.6278820596099706
+DA Q2: Experience Quality (1--7),Interpolated Constant,3.625,2.0289570391377603
+DA Q2: Experience Quality (1--7),Discrete Graded,3.25,1.6931233465600393
+DA Q2: Experience Quality (1--7),Interpolated Graded,4.0625,1.4818344486930155
+DA Q3: Direct vs Interpreted (1--7),Discrete Constant,2.375,1.3601470508735443
+DA Q3: Direct vs Interpreted (1--7),Interpolated Constant,2.1875,1.558578412100805
+DA Q3: Direct vs Interpreted (1--7),Discrete Graded,3.0,1.5491933384829668
+DA Q3: Direct vs Interpreted (1--7),Interpolated Graded,3.625,2.0936411663256274
